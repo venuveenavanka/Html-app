@@ -1,35 +1,29 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const navItems = document.querySelectorAll(".nav-item");
-    const pages = document.querySelectorAll(".page-content");
+    const navItems = document.querySelectorAll('.nav-item');
+    const contentDiv = document.getElementById('content');
 
-    // Function to show the selected page and update navigation item
-    function showPage(pageId) {
-        pages.forEach(page => {
-            if (page.id === pageId) {
-                page.classList.add("active");
-            } else {
-                page.classList.remove("active");
-            }
-        });
+    // Function to load page content
+    function loadContent(page) {
+        fetch(`${page}.html`)
+            .then(response => response.text())
+            .then(data => {
+                contentDiv.innerHTML = data;
 
-        navItems.forEach(item => {
-            if (item.getAttribute("data-target") === pageId) {
-                item.classList.add("active");
-            } else {
-                item.classList.remove("active");
-            }
-        });
+                // Set active navigation item
+                navItems.forEach(item => item.classList.remove('active'));
+                document.querySelector(`[data-target="${page}"]`).classList.add('active');
+            });
     }
 
-    // Event listener for navigation items
+    // Add click event listeners to nav items
     navItems.forEach(item => {
-        item.addEventListener("click", function(event) {
-            event.preventDefault();
-            const targetId = this.getAttribute("data-target");
-            showPage(targetId);
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetPage = this.getAttribute('data-target');
+            loadContent(targetPage);
         });
     });
 
-    // Optionally, show the initial page
-    showPage("home");
+    // Load the default page
+    loadContent('home');
 });
