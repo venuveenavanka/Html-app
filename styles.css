@@ -1,0 +1,87 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Hide all content sections by default */
+.page-content {
+    display: none;
+}
+
+/* Show only the active content section */
+.page-content.active  {
+    display: block;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #02c667;
+    color: rgb(241, 241, 241);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.2);
+}
+.nav-item {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+}
+/* .nav-item.active {
+    background-color: #0f0f0f !important;
+} */
+.nav-item.active .label {
+    color: rgb(10, 10, 10) !important; 
+    font-weight: bold;
+}
+.nav-item .icon {
+    display: block;
+    font-size: 24px;
+}
+
+.nav-item .label {
+    display: block;
+    font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .nav-item .icon {
+        font-size: 20px;
+    }
+
+    .nav-item .label {
+        font-size: 10px;
+    }
+}
