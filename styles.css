@@ -58,12 +58,11 @@ body {
     flex: 1;
     padding: 10px;
 }
-/* .nav-item.active {
+.nav-item.active {
     background-color: #0f0f0f !important;
-} */
+}
 .nav-item.active .label {
-    color: rgb(10, 10, 10) !important; 
-    font-weight: bold;
+    color: rgb(249, 248, 250) !important; 
 }
 .nav-item .icon {
     display: block;
